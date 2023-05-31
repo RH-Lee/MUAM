@@ -1,0 +1,65 @@
+TASK: "MY_train"
+
+GPU: 0
+
+MODEL:
+  ARCH: "MY_model"
+  BASIC_SPLIT: [0.5,0.5]
+
+AUTO:
+  ENABLE: True
+  PREDEFINE: ''
+  FINETUNE: 20
+  EXPAND: 2.0
+  LOAD_WEIGHT: "FINETUNE"
+  FLOPS:
+    ENABLE: True
+    WEIGHT: 3.0
+    EXPAND: 1.0
+
+FINETUNE:
+  THRES: 1e-20
+
+LOSS:
+  MLOSS: 1
+
+DATA:
+  DIR: "datasets/DUTS/Train"
+  PRETRAIN: ''
+  BATCH_SIZE: 8
+  WORKERS: 0
+  IMAGE_H: 512
+  IMAGE_W: 512
+  RESUME: ""
+
+
+VAL:
+  DIR: "datasets/DUTS/Test"
+
+
+TEST:
+  DATASET_PATH: 'datasets/DUTS/Test'
+  DATASETS: ['my']
+  INTERVAL: 5
+  ENABLE: False
+  IMAGE_H: 512
+  IMAGE_W: 512
+  TESTALL: False
+  CHECKPOINT:  ""
+
+SOLVER:
+  METHOD: 'Adam_dynamic_weight_decay'
+  LR: 1e-4
+  ADJUST_STEP: True
+  STEPS: [200,250]
+  MAX_EPOCHS: 200
+  FINETUNE:
+    METHOD: 'Adam'
+    LR: 1e-4
+    ADJUST_STEP: True
+    STEPS: [50,100]
+
+PRUNE:
+  BNS: True
+  SHOW: True
+

@@ -1,0 +1,40 @@
+TASK: "MY"
+
+GPU: 0
+
+MODEL:
+  ARCH: "MY_model"
+  BASIC_SPLIT: [0.5,0.5]
+
+AUTO:
+  ENABLE: True
+  PREDEFINE: ''
+  FINETUNE: 40
+  EXPAND: 2.0
+  LOAD_WEIGHT: "FINETUNE"
+  FLOPS:
+    ENABLE: True
+    WEIGHT: 3.0
+    EXPAND: 1.0
+
+DATA:
+  DIR: "datasets/sal/DUTS-TR"
+  PRETRAIN: ''
+  BATCH_SIZE: 8
+  WORKERS: 0
+  IMAGE_H: 512
+  IMAGE_W: 512
+  RESUME: ""
+
+VAL:
+  DIR: "datasets/fossil"
+
+TEST:
+  DATASET_PATH: 'datasets/fossil'
+  DATASETS: ['']
+  INTERVAL: 5
+  ENABLE: False
+  IMAGE_H: 512
+  IMAGE_W: 512
+  TESTALL: False
+  CHECKPOINT:  ""
