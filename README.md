@@ -36,9 +36,9 @@ MUAM
 
 ## Run
 <pre><code>
-# For training TRACER-TE0 (e.g.)
+# For training
 python MY_train.py
 
-# For testing TRACER with pre-trained model (e.g.)  
+# For testing
 python MY_test.py
 </code></pre>
